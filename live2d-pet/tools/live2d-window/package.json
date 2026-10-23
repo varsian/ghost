@@ -13,6 +13,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "electron": "28.3.3"
+    "electron": "42.11.9"
   }
 }
