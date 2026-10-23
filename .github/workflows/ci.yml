@@ -1,0 +1,101 @@
+# Continuous integration for GHOST Community Edition.
+#
+# This workflow is intentionally offline-safe and secret-free: no repository
+# secrets, no EULA-gated downloads, no model/voice/vendor binaries, no network
+# fetches at test time. It checks the source tree as published.
+#
+# The pinned actions are resolved to full commit SHAs (supply-chain hardening);
+# keep the version comment next to the SHA and update both together.
+#   actions/checkout    v7.0.1  3d3c42e5aac5ba805825da76410c181273ba90b1
+#   actions/setup-node  v7.1.0  949feb2413d6458794dcd2491c4babbbce0c15c1
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Least privilege: CI only reads the repository.
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  node-syntax:
+    name: Node syntax check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+
+      - name: Syntax-check every JS/ESM file except vendor *.min.js
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t files < <(
+            find . -type f \( -name '*.js' -o -name '*.mjs' \) \
+              ! -name '*.min.js' \
+              ! -path './.git/*' \
+              ! -path '*/node_modules/*' \
+              | sort
+          )
+          if [ "${#files[@]}" -eq 0 ]; then
+            echo "::error::no JavaScript files found to check"
+            exit 1
+          fi
+          echo "Checking ${#files[@]} JavaScript files"
+          for file in "${files[@]}"; do
+            node --check "$file"
+          done
+
+  node-tests:
+    name: Offline node:test suites
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+
+      - name: Run offline tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --test \
+            live2d-pet/tests/test_sse_backpressure.mjs \
+            live2d-pet/tests/test_window_singleton.mjs
+
+  python-syntax:
+    name: Python byte-compilation
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Byte-compile the Python sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 --version
+          python3 -m compileall -q voice-plugin/python live2d-pet/packages/plugin/python

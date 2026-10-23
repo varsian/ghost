@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Live2D 桌宠",
+    "description": "在 Web 界面叠加任意 Live2D 模型（Cubism 2/3/4），用 TTS 插件真实播放的音频包络驱动口型，用情绪与文本驱动表情和动作；支持 /live2d 命令、换模型、调大小与位置。"
+  }
+}

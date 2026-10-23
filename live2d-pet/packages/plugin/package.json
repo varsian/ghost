@@ -1,0 +1,26 @@
+{
+  "name": "@local/dsh-live2d",
+  "version": "0.1.0",
+  "description": "Live2D avatar overlay for DeepSeek Harness: renders any Live2D model (Cubism 2/3/4) in the Web GUI and reacts to the local TTS plugin's real playback sound, emotions and text.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "lib",
+    "vendor",
+    "models",
+    "python",
+    "icon.svg"
+  ],
+  "license": "Apache-2.0",
+  "dsh": {
+    "client": {
+      "platform": "web"
+    }
+  }
+}

@@ -1,0 +1,63 @@
+# --- dependencies / build environments -------------------------------------
+node_modules/
+.venv/
+.venv-*/
+__pycache__/
+*.pyc
+*.pyo
+*.tsbuildinfo
+.pytest_cache/
+.test-cache/
+
+# --- local runtime state ----------------------------------------------------
+data/
+logs/
+*.log
+.live2d-home/
+.live2d-work/
+.live2d-window.lock
+.live2d-window.pid
+
+# --- vendor runtime: proprietary Live2D Cubism cores are fetched, never committed
+live2d-pet/packages/plugin/vendor/live2dcubismcore.min.js
+live2d-pet/packages/plugin/vendor/live2d.min.js
+live2d-pet/packages/plugin/vendor/manifest.json
+
+# --- browser build outputs (inline the proprietary cores) -------------------
+live2d-pet/packages/plugin/lib/client.js
+live2d-pet/packages/plugin/lib/client.js.map
+live2d-pet/packages/plugin/lib/window.js
+live2d-pet/packages/plugin/lib/window.js.map
+
+# --- model binaries and textures are user-supplied --------------------------
+**/models/*
+!**/models/README.md
+*.moc3
+*.model.json
+*.model3.json
+*.physics3.json
+*.cdi3.json
+*.pose3.json
+*.userdata3.json
+*.exp3.json
+*.motion3.json
+*.vtube.json
+*.wav
+*.mp3
+*.m4a
+
+# --- local screenshots / evidence (never part of the snapshot) -------------
+*.png
+*.webp
+*.jpg
+*.jpeg
+*.mp4
+*.webm
+live2d-pet/tests/artifacts/
+
+# --- editor / OS noise ------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~

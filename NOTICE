@@ -1,0 +1,50 @@
+GHOST — local, realtime Live2D digital human for DeepSeek Harness
+Copyright 2026 the GHOST project contributors
+
+This product includes software developed by third parties. The original code in
+this repository (the packaging work, the Live2D pet and the TTS bridge) is
+licensed under the Apache License, Version 2.0 (see LICENSE). The following
+components keep their own licenses; their full license texts are included in the
+repository next to the component (and mirrored under
+third_party/soullink-emotion-sdk/licenses/).
+
+* Soullink Emotion SDK (subset: dsh-live2d-adapter sources + built IIFE)
+  Copyright the Soullink Emotion SDK contributors
+  Licensed under the Apache License, Version 2.0.
+  Included in: third_party/soullink-emotion-sdk/ and
+  live2d-pet/packages/plugin/vendor/soullink/
+
+* pixi.js 7.4.3
+  Copyright the pixi.js contributors
+  Licensed under the MIT License.
+  Included in: live2d-pet/packages/plugin/vendor/pixi.min.js
+  License text: live2d-pet/packages/plugin/vendor/LICENSE-pixi.js.txt
+
+* pixi-live2d-display 0.5.0-beta
+  Copyright the pixi-live2d-display contributors
+  Licensed under the MIT License.
+  Included in: live2d-pet/packages/plugin/vendor/pixi-live2d-display.min.js
+  License text: live2d-pet/packages/plugin/vendor/LICENSE-pixi-live2d-display.txt
+
+* Live2D Cubism Core (Cubism 4; legacy Cubism 2 core)
+  Copyright Live2D Inc.
+  Proprietary software, licensed under the Live2D Proprietary Software License
+  Agreement. NOT included in this repository: the core is downloaded by
+  scripts/fetch-vendor.mjs only after the user accepts the EULA, and the file is
+  gitignored. See docs/LICENSING.md; the license text lives in
+  live2d-pet/packages/plugin/vendor/LICENSE-live2d-core.txt.
+  License: https://www.live2d.com/eula/live2d-proprietary-software-license-agreement_en.html
+  Release License: https://www.live2d.com/en/download/cubism-sdk/release-license/
+
+* @deepseek-ai/dsh-tool-tts plugin artifact snapshot (voice-plugin/)
+  Snapshot of the DeepSeek Harness tool-tts plugin artifact (version 0.1.5-rc.2),
+  kept under its upstream MIT license — it is not relicensed to Apache-2.0.
+  The Python engine targets VoxCPM 1.5; the voxcpm 1.5.0 package, the VoxCPM 1.5
+  model code and weights, and the rest of the Python dependency stack carry their
+  own upstream licenses. Model weights and reference voices are not shipped.
+
+* Electron (runtime dependency of live2d-pet/tools/live2d-window)
+  Licensed under the MIT License. Not committed; installed locally with npm.
+
+No Live2D models, model textures, VoxCPM weights, voice/reference audio files or
+other user-supplied assets are distributed with this repository.

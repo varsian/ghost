@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "comment": "SHA-256 pin for the runtime vendor artifacts (supply-chain integrity, not provenance). scripts/fetch-vendor.mjs refuses to use or re-download a file that does not match this lock, and packages/plugin/build-client.mjs inlines only files recorded here. The genuine artifact is the hash recorded here; anything else is a corrupted or tampered download. pixi/display are committed (MIT); both Live2D Cubism cores are NOT committed, they are fetched only after the Live2D EULA is accepted.",
+  "generator": "scripts/fetch-vendor.mjs",
+  "update": "Review the upstream change first, then run: node scripts/fetch-vendor.mjs --accept-live2d-eula --update-lock",
+  "files": {
+    "pixi": {
+      "file": "live2d-pet/packages/plugin/vendor/pixi.min.js",
+      "bytes": 456150,
+      "sha256": "712a3e1943b062a907d86c5bb56b67c7b32a3f03b3654768b00b7016d30a24c6",
+      "source": "npm pixi.js@7.4.3 dist/pixi.min.js",
+      "license": "MIT",
+      "committed": true
+    },
+    "display": {
+      "file": "live2d-pet/packages/plugin/vendor/pixi-live2d-display.min.js",
+      "bytes": 152167,
+      "sha256": "ebf60aa5e4d88a05ec730881d75eb98f86aac04bca26bdcc4ee2e0758b9f6ec3",
+      "source": "npm pixi-live2d-display@0.5.0-beta dist/index.min.js (all-in-one build)",
+      "license": "MIT",
+      "committed": true
+    },
+    "core": {
+      "file": "live2d-pet/packages/plugin/vendor/live2dcubismcore.min.js",
+      "bytes": 207155,
+      "sha256": "25ae938cb4fe282ce189b357bcc97e603d1e1f7ec78bf04150d401c23cdc792f",
+      "source": "https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js",
+      "license": "Live2D Proprietary Software License Agreement",
+      "committed": false
+    },
+    "core2": {
+      "file": "live2d-pet/packages/plugin/vendor/live2d.min.js",
+      "bytes": 129056,
+      "sha256": "e4ea1f18bdd44b65394ffd5a1bab16982e88757d45134d1bd0737c8a6b3ddd08",
+      "source": "community mirror https://cdn.jsdelivr.net/gh/dylanNew/live2d/webgl/Live2D/lib/live2d.min.js (Cubism 2 Core; only needed for Cubism 2 models)",
+      "license": "Live2D Proprietary Software License Agreement",
+      "committed": false
+    }
+  }
+}

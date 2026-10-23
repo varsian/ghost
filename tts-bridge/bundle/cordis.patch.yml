@@ -1,0 +1,38 @@
+# Layer contributed by @local/dsh-live2d-tts-bridge.
+#
+# This is an INDEPENDENT bundle, deliberately separate from
+# @local/dsh-live2d-bundle: the Live2D avatar works on its own (idle animation,
+# model switching, standalone window), and only this bridge couples it to the
+# local `tts` tool's audio. Switching this bundle off restores stock TTS
+# behaviour and leaves the Live2D plugin running untouched.
+#
+# The installed voice bundle *inserts* the `tool-tts` row (native daemon). We do
+# NOT insert a second row: we override that row by id. A bundle layer applies
+# after the voice bundle, so this config is the effective one; `config` is a
+# whole-row replacement (every field is restated), with `daemonScript` pointing
+# at the mirror shim that tees the real playback PCM to the Live2D host.
+# Placeholders (rendered by live2d-pet/tools/install.ps1):
+#   <PLUGIN_DIR>  -> absolute path of the live2d-pet/ directory   (automatic)
+#   <PYTHON>      -> TTS python interpreter, pass -PythonPath    (TTS_ROW)
+#   <VOICES_DIR>  -> single reference-voice folder (one audio file + its same-stem
+#                    .txt transcript), pass -VoicesDir            (TTS_ROW)
+#   <MODELS_DIR>  -> VoxCPM 1.5 model directory, pass -ModelDir (TTS_ROW)
+#   <CACHE_DIR>   -> daemon cache directory, pass -CacheDir      (TTS_ROW)
+# Values that are not rendered are left as-is; replace them manually if you
+# install by hand. The TTS row fields below mirror the stock VoxCPM 1.5 row; edit
+# them if your install uses a different model/device.
+- id: tool-tts
+  name: '@deepseek-ai/dsh-tool-tts'
+  config:
+    pythonPath: '<PYTHON>'
+    voicesDir: '<VOICES_DIR>'   # the one reference voice: one audio file + same-stem .txt
+    defaultEmotion: 默认
+    modelDir: '<MODELS_DIR>'
+    cacheDir: '<CACHE_DIR>'
+    device: 'cuda:0'
+    cfgValue: 2.7
+    inferenceTimesteps: 10
+    preload: false
+    # Mirror the real daemon: relay every frame byte-for-byte and tee the
+    # playback PCM envelope + segment emotion timeline to the Live2D host.
+    daemonScript: '<PLUGIN_DIR>/packages/plugin/python/live2d_tts_shim.py'

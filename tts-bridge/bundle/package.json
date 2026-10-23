@@ -1,0 +1,27 @@
+{
+  "name": "@local/dsh-live2d-tts-bridge",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Live2D × TTS 联动桥（可选独立插件）：把 tts daemon 指向 Live2D 的镜像 shim，转发真实播放包络/情绪给 Live2D 窗口；关掉即恢复原生 TTS，与 Live2D 插件本身互不依赖。",
+  "icon": "./icon.svg",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./locale/*.json": "./locale/*.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "cordis.patch.yml",
+    "icon.svg",
+    "locale/*.json"
+  ],
+  "license": "Apache-2.0",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

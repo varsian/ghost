@@ -1,0 +1,30 @@
+{
+  "name": "@local/dsh-live2d-bundle",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Live2D desktop mascot for DeepSeek Harness: a transparent avatar overlay driven by the local TTS plugin's real playback envelope, emotions and text.",
+  "icon": "./icon.svg",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./locale/*.json": "./locale/*.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "cordis.patch.yml",
+    "icon.svg",
+    "locale/*.json"
+  ],
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@local/dsh-live2d": "0.1.0"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

@@ -1,0 +1,113 @@
+# Layer contributed by @local/dsh-live2d-bundle.
+#
+# The rows live here (not in the profile's own cordis.patch.yml) so the Plugins
+# page can list this bundle as one card and switch the whole feature on or off;
+# individual rows can still be disabled by id from the profile patch layer.
+#
+# `config` is a whole-row replacement, never a merge: keep this list complete.
+# The values mirror DESIGN.md section 2.3 and the plugin's own defaults.
+- insert:
+    - id: live2d
+      name: '@local/dsh-live2d'
+      config:
+        # Row switch, evaluated by the Loader before the plugin is imported.
+        enabled: true
+        # Local HTTP + SSE server for the browser client half.
+        port: 34567
+        # Shared secret the TTS shim presents on POST /ingest. Loopback-only,
+        # not a credential: it only keeps unrelated local processes from
+        # injecting fake speech events.
+        ingestToken: 'dsh-live2d-local'
+        # Model root; empty means the plugin's bundled models/ directory.
+        modelsDir: ''
+        # Model id; empty means the first model found by the catalog scan.
+        defaultModel: ''
+        # Initial visibility: on out of the box for a new install,
+        # switch off any time with /live2d off.
+        visible: true
+        # Presentation: `window` (standalone transparent always-on-top pet window,
+        # default), `overlay` (inside the Web GUI), `both`, or `none`.
+        mode: 'window'
+        scale: 1.0
+        anchor: 'bottom-right'
+        offsetX: 0
+        offsetY: 0
+        opacity: 1.0
+        # CPU-friendly defaults: bounded frame rate, small canvas and device pixel ratio.
+        fps: 30
+        # Idle animation frame cap (saves CPU/GPU when nothing is being expressed).
+        idleFps: 24
+        maxWidth: 360
+        maxHeight: 520
+        devicePixelRatioCap: 1
+        idleMotion: true
+        blink: true
+        breathe: true
+        gazeFollow: true
+        lipSync: true
+        lipSyncGain: 1.0
+        lipSyncSmoothing: 0.55
+        # Empty = idle is natural sway only (breath/blink/gaze/head-body sway).
+        # Set a list such as ['亲切', '强调', '否认'] to re-enable random idle moods.
+        idleMoods: []
+        # Standalone Electron pet window geometry.
+        windowWidth: 360
+        windowHeight: 520
+        windowX: null
+        windowY: null
+        windowAlwaysOnTop: false
+        # Window launcher override; empty = <repo>/tools/live2d-window/launch.mjs.
+        windowLauncher: ''
+        # Emotion name -> { expression, params } overrides for the model at hand.
+        expressionMap: {}
+        # Slow sinusoidal body/head sway while speaking (the engine damps its own
+        # idle sway in SPEAKING; without this the body looks frozen mid-sentence).
+        # Amplitudes are final Live2D parameter units (head* = degrees).
+        # Set enabled:false or gain:0 to turn it off.
+        speechSway:
+          enabled: true
+          gain: 1.6
+          headX: 1.5
+          headY: 1.0
+          headZ: 2.4
+          bodyX: 1.0
+          bodyZ: 1.6
+        # How a mid-utterance TTS emotion change is applied:
+        #   expression = full intent (native exp3 follows) + immediate return to SPEAKING
+        #   vad        = VAD-only blend (no native expression change)
+        speechEmotionMode: expression
+        # Speech-performance ("talking gestures") tuning. speechGestureGain is the
+        # SDK's gestureAmplitudeGain (0..2.6, default 1): how big the planned
+        # nods/tilts/sways are. The rest control density and planner confidence.
+        parameterGain: 1.8
+        speechGestureGain: 2.6
+        speechGestureLimit: 4
+        speechMotionDensity: 1.0
+        speechGestureRestMs: 0
+        speechGestureConfidence: 0.95
+        speechIntensity: 1.0
+        # Loudness-peak accents: a smooth raised-cosine nod/bump triggered by the
+        # TTS envelope, so emphasis lands on the loud syllable (real-time version
+        # of the planner's audioPeaks, which needs lookahead we don't have).
+        speechPeakAccent:
+          enabled: true
+          threshold: 0.55
+          minIntervalMs: 420
+          durationMs: 520
+          headY: 3.2
+          headZ: 1.6
+          bodyY: 1.2
+        # State/log directory; empty means <plugin package>/data.
+        dataDir: ''
+
+    # NOTE: this bundle deliberately contains ONLY the Live2D row. The optional
+    # TTS coupling lives in the separate bundle @local/dsh-live2d-tts-bridge
+    # (tts-bridge/bundle/), which owns the tool-tts daemonScript override.
+    # Either bundle can be switched on/off independently from the Plugins page:
+    #   - @local/dsh-live2d-bundle        → the avatar itself (window/overlay/models)
+    #   - @local/dsh-live2d-tts-bridge    → real audio envelope + emotions from tts
+
+
+
+
+

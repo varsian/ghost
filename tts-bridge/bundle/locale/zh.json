@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Live2D × TTS 联动桥",
+    "description": "可选独立插件：把 tts daemon 指向 Live2D 的镜像 shim，转发真实播放包络与逐段情绪给 Live2D（口型/表情/动作）；关掉即恢复原生 TTS，Live2D 插件本身仍可独立运行。"
+  }
+}

@@ -1,0 +1,41 @@
+# Python engine dependencies for the DSH `tts` tool (packages/extensions/tool-tts/python).
+#
+# Interpreter: <TTS_RUNTIME_ROOT>\.venv-vox\Scripts\python.exe (CPython 3.12, Windows x64)
+#
+# torch/torchaudio must come from the CUDA 12.8 wheel index: the RTX 5060 Laptop is
+# sm_120, which only cu128 wheels support. `voxcpm` is installed with --no-deps plus
+# this curated set, because its own dependency list pulls the WebUI and fine-tuning
+# stack (gradio, datasets, spaces, funasr, modelscope) that inference does not need —
+# and the funasr/transformers pins conflict with the model runtime.
+#
+#   uv venv <TTS_RUNTIME_ROOT>\.venv-vox --python 3.12
+#   uv pip install --python "…\.venv-vox\Scripts\python.exe" \
+#       torch torchaudio --index-url https://download.pytorch.org/whl/cu128
+#   uv pip install --python "…\.venv-vox\Scripts\python.exe" voxcpm==1.5.0 --no-deps
+#   uv pip install --python "…\.venv-vox\Scripts\python.exe" -r requirements.txt
+#
+# (a venv created by uv has no `pip` module; use `uv pip` or `python -m ensurepip` first)
+#
+# The denoiser (ZipEnhancer) is deliberately not installed: it needs a ModelScope
+# download and caps voice cloning at 16 kHz, while VoxCPM 1.5 decodes at 44.1 kHz.
+#
+# The engine clones the one reference voice with the clip's own transcript, so the
+# runtime needs no speech-recognition stack.
+
+numpy>=1.26
+sounddevice>=0.4.7
+soundfile>=0.12.1
+transformers>=4.36.2
+einops
+huggingface-hub
+safetensors
+pydantic
+tqdm
+inflect
+regex
+wetext
+addict
+simplejson
+sortedcontainers
+torch>=2.7
+torchaudio>=2.7

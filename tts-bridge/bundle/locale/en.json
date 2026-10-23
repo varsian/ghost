@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Live2D × TTS bridge",
+    "description": "Optional standalone plugin: points the tts daemon at Live2D's mirror shim and forwards the real playback envelope plus per-segment emotions to Live2D (mouth/expression/motion). Switch it off to restore stock TTS; the Live2D plugin keeps running independently."
+  }
+}

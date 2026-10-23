@@ -1,0 +1,77 @@
+name: Feature request
+description: Suggest an idea or improvement for GHOST Community Edition
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting an improvement to GHOST Community Edition.
+
+        Before submitting, please check the project's scope in `CONTRIBUTING.md`:
+        GHOST is local-first (no telemetry, no accounts, no cloud TTS), and it cannot
+        bundle Live2D models/textures, Live2D Cubism Core, VoxCPM weights or reference
+        voices. Requests to change those boundaries are out of scope.
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      description: Which part of the stack would this change?
+      options:
+        - live2d-pet (Live2D desktop pet)
+        - tts-bridge (Live2D x TTS playback bridge)
+        - voice-plugin (VoxCPM 1.5 TTS plugin snapshot)
+        - docs / scripts / repository tooling
+        - new component or integration
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or motivation
+      description: What problem does this solve? Why does the current behaviour fall short?
+      placeholder: "When I ... I cannot ... because ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Describe the behaviour, configuration or API you would like.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Wrappers, local workarounds, or other approaches you have tried.
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: |
+        Sketches, screenshots or logs that help explain the request. Remove local
+        paths, tokens, personal information and any proprietary assets.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues and the documentation for a similar request.
+          required: true
+        - label: I understand this project cannot bundle Live2D models, Live2D Cubism Core, VoxCPM weights or reference voices.
+          required: true
+        - label: This request respects the local-first design (no telemetry, no accounts, no cloud TTS).
+          required: true
+        - label: This request contains no secrets or personal information.
+          required: true

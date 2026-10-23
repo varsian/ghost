@@ -1,0 +1,13 @@
+# Issue configuration for the GHOST Community Edition repository.
+#
+# Discussion forums are not used by this project, so no contact link points there.
+# Bug reports and feature requests belong in the issue forms. Security
+# vulnerabilities must never be filed publicly: follow SECURITY.md and use GitHub
+# private vulnerability reporting.
+#
+# A contact link can be added once the public repository URL is final, e.g.:
+# contact_links:
+#   - name: Security policy
+#     url: <repository-url>/security/policy
+#     about: Report a vulnerability privately - do not open a public issue.
+blank_issues_enabled: true

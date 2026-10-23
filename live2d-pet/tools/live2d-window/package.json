@@ -1,0 +1,18 @@
+{
+  "name": "live2d-window",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Standalone transparent, frameless, always-on-top Electron window for the DSH Live2D plugin",
+  "type": "commonjs",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "launch": "node launch.mjs",
+    "close": "node launch.mjs --close",
+    "status": "node launch.mjs --status"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "electron": "28.3.3"
+  }
+}

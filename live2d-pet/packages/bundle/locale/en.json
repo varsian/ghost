@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Live2D avatar",
+    "description": "Overlays any Live2D model (Cubism 2/3/4) on the Web GUI, lip-syncing it to the local TTS plugin's real playback envelope and driving expressions and motions from emotions and text; includes the /live2d command family, model switching, scaling and positioning."
+  }
+}

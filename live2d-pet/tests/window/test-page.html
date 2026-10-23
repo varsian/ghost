@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Live2D window test page</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    overflow: hidden;
+    font-family: system-ui, "Segoe UI", sans-serif;
+    user-select: none;
+  }
+  /* Frameless-window drag region: the real /window page owns its own layout. */
+  .dragbar {
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 28px;
+    -webkit-app-region: drag;
+    background: rgba(20, 22, 30, 0.55);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 11px;
+    line-height: 28px;
+    text-align: center;
+    letter-spacing: 0.04em;
+    border-radius: 10px 10px 0 0;
+  }
+  .stage {
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    bottom: 16px;
+    top: 44px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  .mascot {
+    width: 150px;
+    height: 150px;
+    border-radius: 50% 50% 46% 46%;
+    background: radial-gradient(circle at 40% 32%, #9fd7ff 0%, #4f8fe0 45%, #2c4f9e 100%);
+    box-shadow: 0 8px 26px rgba(20, 40, 90, 0.45);
+    position: relative;
+  }
+  .mascot::before,
+  .mascot::after {
+    content: "";
+    position: absolute;
+    top: 52px;
+    width: 16px;
+    height: 20px;
+    border-radius: 50%;
+    background: #10203f;
+    box-shadow: inset 0 4px 0 rgba(255, 255, 255, 0.35);
+  }
+  .mascot::before { left: 46px; }
+  .mascot::after { right: 46px; }
+  .mouth {
+    position: absolute;
+    left: 50%;
+    top: 92px;
+    width: 26px;
+    height: 14px;
+    margin-left: -13px;
+    border-radius: 0 0 14px 14px;
+    background: #10203f;
+  }
+  .label {
+    pointer-events: none;
+    text-align: center;
+    color: #10203f;
+    font-size: 12px;
+    line-height: 16px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(16, 32, 63, 0.12);
+  }
+  .meta {
+    position: absolute;
+    left: 8px;
+    bottom: 2px;
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.75);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  }
+</style>
+</head>
+<body>
+  <div class="dragbar">Live2D window · drag here</div>
+  <div class="stage">
+    <div class="mascot"><div class="mouth"></div></div>
+    <div class="label">LIVE2D WINDOW TEST<br>transparent · frameless · always on top</div>
+  </div>
+  <div class="meta" id="meta"></div>
+  <script>
+    const meta = document.getElementById('meta')
+    meta.textContent = `${window.innerWidth}x${window.innerHeight} · ${location.protocol}`
+    window.__LIVE2D_WINDOW_TEST__ = true
+  </script>
+</body>
+</html>

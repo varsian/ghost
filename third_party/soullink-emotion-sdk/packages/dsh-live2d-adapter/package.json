@@ -1,0 +1,37 @@
+{
+  "name": "@soullink-emotion/dsh-live2d-adapter",
+  "version": "0.1.0",
+  "private": true,
+  "description": "DSH (DeepSeek Harness) adapter: createSoullinkStage() wires the Soullink emotion runtime, the Live2D PIXI renderer and an audio-envelope lip-sync analyzer into one transparent overlay stage.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "node ./scripts/build.mjs",
+    "pack:check": "node -e \"console.log(require('node:fs').readdirSync('dist'))\""
+  },
+  "dependencies": {
+    "@soullink-emotion/engine": "0.2.0-beta.1",
+    "@soullink-emotion/live2d-pixi": "0.2.0-beta.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "typescript": "^5.9.3"
+  }
+}

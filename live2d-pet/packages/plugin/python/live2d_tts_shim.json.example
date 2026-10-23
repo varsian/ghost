@@ -1,0 +1,10 @@
+{
+  "realDaemon": "<DSH_PROFILE>/node_modules/@deepseek-ai/dsh-tool-tts/python/tts_daemon.py",
+  "ingestUrl": "http://127.0.0.1:34567/ingest",
+  "token": "dsh-live2d-local",
+  "enabledFile": "<PLUGIN_ROOT>/packages/plugin/data/tts-bridge.enabled",
+  "hopMs": 20,
+  "envelopeGain": 3.0,
+  "batchFrames": 4,
+  "latencyExtraMs": 0
+}
