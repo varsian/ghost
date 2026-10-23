@@ -35,9 +35,9 @@ speaking gestures.
 
 ## Recognition
 
-![Bilibili Live invitation](https://img.shields.io/badge/Bilibili%20Live-official%20invitation-00A1D6)
-![Test broadcast](https://img.shields.io/badge/test%20broadcast-473K%20viewers-00A1D6)
-![Net followers](https://img.shields.io/badge/net%20followers-%2B928%20%C2%B7%20top%201%25-ff69b4)
+[![Bilibili Live invitation](https://img.shields.io/badge/Bilibili%20Live-official%20invitation-00A1D6)](https://space.bilibili.com/3494377131346746)
+[![Test broadcast](https://img.shields.io/badge/test%20broadcast-473K%20viewers-00A1D6)](https://space.bilibili.com/3494377131346746)
+[![Net followers](https://img.shields.io/badge/net%20followers-%2B928%20%C2%B7%20top%201%25-ff69b4)](https://space.bilibili.com/3494377131346746)
 
 **Invited by Bilibili Live.** In October 2026 the Bilibili Live team invited the
 GHOST maintainer to test-broadcast in its newly launched **AI Application & Robotics**

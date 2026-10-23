@@ -26,9 +26,9 @@
 
 ## 官方认可与实测数据
 
-![B站直播官方邀请](https://img.shields.io/badge/Bilibili%20Live-official%20invitation-00A1D6)
-![试播数据](https://img.shields.io/badge/test%20broadcast-473K%20viewers-00A1D6)
-![粉丝数据](https://img.shields.io/badge/net%20followers-%2B928%20%C2%B7%20top%201%25-ff69b4)
+[![B站直播官方邀请](https://img.shields.io/badge/Bilibili%20Live-official%20invitation-00A1D6)](https://space.bilibili.com/3494377131346746)
+[![试播数据](https://img.shields.io/badge/test%20broadcast-473K%20viewers-00A1D6)](https://space.bilibili.com/3494377131346746)
+[![粉丝数据](https://img.shields.io/badge/net%20followers-%2B928%20%C2%B7%20top%201%25-ff69b4)](https://space.bilibili.com/3494377131346746)
 
 **收到 B站直播官方邀请。** 2026 年 10 月，B站直播团队邀请 GHOST 维护者以 AI 虚拟主播形式，参与新上线的 **「AI 应用-机器人」** 分区试播。
 
